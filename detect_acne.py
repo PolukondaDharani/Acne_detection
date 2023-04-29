@@ -21,11 +21,11 @@ net = cv2.dnn.readNet(prototxtPath, weightsPath)
 
 # load the face mask detector model from disk
 print("[INFO] loading face acne detector model...")
-model = load_model("/facemodel.model")
+model = load_model("facemodel.model")
 
 # load the input image from disk, clone it, and grab the image spatial
 # dimensions
-image = cv2.imread("images.jpg")
+image = cv2.imread("p.jpg")
 orig = image.copy()
 (h, w) = image.shape[:2]
 
@@ -85,5 +85,7 @@ for i in range(0, detections.shape[2]):
 		cv2.rectangle(image, (startX, startY), (endX, endY), color, 2)
 
 # show the output image
+
 plt.imshow((cv2.cvtColor(image, cv2.COLOR_BGR2RGB)))
-plt.show()
+cv2.imwrite("output.jpg", image)
+# cv2.imshow("Output", image)
